@@ -23,7 +23,7 @@ function isAnAd(url, host) {
 function regexAdMatch(url) {
   return AD_DOMAIN_BLACKLIST.some(function (elem) {
     return shExpMatch(url, "*." + elem);
-  }
+  });
 }
 
 function domainAdMatch(host) {
