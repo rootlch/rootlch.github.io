@@ -17,12 +17,13 @@ function FindProxyForURL(url, host) {
 }
 
 function isAnAd(url, host) {
-  return domainAdMatch(host);
+  return regexAdMatch(url);
 }
 
 function regexAdMatch(url) {
-  // implement this later
-  return false; //if (shExpMatch(url, "*.ad./*")) return true;
+  return AD_DOMAIN_BLACKLIST.some(function (elem) {
+    return shExpMatch(url, "*." + elem);
+  }
 }
 
 function domainAdMatch(host) {
