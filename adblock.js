@@ -1,34 +1,6 @@
 // Credits
 // Thank you to http://pgl.yoyo.org for the list of ad servers.
-// Thank you to saudor on the macrumors for his/her script that inspired this one.
-
-// Production steps of ECMA-262, Edition 5, 15.4.4.17
-// Reference: http://es5.github.io/#x15.4.4.17
-if (!Array.prototype.some) {
-  Array.prototype.some = function(fun/*, thisArg*/) {
-    'use strict';
-
-    if (this == null) {
-      throw new TypeError('Array.prototype.some called on null or undefined');
-    }
-
-    if (typeof fun !== 'function') {
-      throw new TypeError();
-    }
-
-    var t = Object(this);
-    var len = t.length >>> 0;
-
-    var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
-    for (var i = 0; i < len; i++) {
-      if (i in t && fun.call(thisArg, t[i], i, t)) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-}
+// Thank you to saudor on the macrumors for his/her script that inspired this.
 
 
 var DESTROY_AD = "PROXY 8.8.8.8:53";
@@ -55,6 +27,6 @@ function regexAdMatch(url) {
 
 function domainAdMatch(host) {
   return AD_DOMAIN_BLACKLIST.some(function (elem) { 
-    return dnsDomainIs(host, elem);
+    return true; // dnsDomainIs(host, elem);
   });
 }
