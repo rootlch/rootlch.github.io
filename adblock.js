@@ -25,6 +25,5 @@ function regexAdMatch(url) {
 }
 
 function domainAdMatch(host) {
-  //return AD_DOMAIN_BLACKLIST.some((elem) => dnsDomainIs(host, elem));
-  return true;
+  return AD_DOMAIN_BLACKLIST.some((elem) => dnsDomainIs(host, elem));
 }
